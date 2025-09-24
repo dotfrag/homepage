@@ -1,0 +1,135 @@
+article {
+	/* Headings */
+	h1 {
+		@apply mb-2 text-4xl font-extrabold;
+	}
+	h2 {
+		@apply mt-8 text-2xl font-bold;
+	}
+	h3 {
+		@apply mt-6 text-xl font-semibold;
+
+		& > code {
+			@apply bg-surface-0 rounded-sm px-1.5 py-0.5;
+		}
+	}
+	/* FIXME */
+	h1 + div:has(> pre),
+	h1 + pre,
+	h2 + div:has(> pre),
+	h2 + pre,
+	h3 + div:has(> pre),
+	h3 + pre,
+	h4 + div:has(> pre),
+	h4 + pre,
+	h5 + div:has(> pre),
+	h5 + pre,
+	h6 + div:has(> pre),
+	h6 + pre {
+		@apply my-5;
+	}
+
+	/* Body */
+	time {
+		@apply font-mono;
+	}
+	p {
+		@apply my-5 leading-7;
+	}
+	ol {
+		@apply my-2 pl-5;
+		li {
+			@apply list-decimal;
+		}
+	}
+	ul {
+		@apply my-2 pl-5;
+		li {
+			@apply list-disc;
+		}
+	}
+	a {
+		@apply text-blue;
+	}
+	ul {
+		@apply pl-6;
+		& > li::marker {
+			@apply text-surface-2;
+		}
+	}
+	mark {
+		@apply bg-yellow text-mantle rounded-sm px-0.5 font-semibold;
+	}
+	abbr {
+		@apply cursor-help underline-offset-4;
+	}
+	/* https://dylanatsmith.com/wrote/styling-the-kbd-element */
+	kbd {
+		--kbd-color-background: var(--color-surface-2);
+		--kbd-color-border: var(--color-surface-1);
+		--kbd-color-text: var(--color-text);
+		background-color: var(--kbd-color-background);
+		color: var(--kbd-color-text);
+		border-radius: 0.25rem;
+		border: 1px solid var(--kbd-color-border);
+		box-shadow: 0 2px 0 1px var(--kbd-color-border);
+		cursor: default;
+		font-family: var(--font-mono);
+		font-size: 0.75em;
+		line-height: 1;
+		min-width: 0.75rem;
+		text-align: center;
+		padding: 2px 5px;
+		position: relative;
+		top: -1px;
+		&:hover {
+			box-shadow: 0 1px 0 0.5px var(--kbd-color-border);
+			top: 1px;
+		}
+	}
+
+	/* Tables */
+	table {
+		@apply w-full text-sm leading-10;
+
+		thead {
+			@apply border-surface-2 border-b;
+		}
+		tbody tr:not(:last-child) {
+			@apply border-surface-1 border-b;
+		}
+		th {
+			@apply text-left;
+		}
+
+		code {
+			@apply text-xs;
+		}
+	}
+
+	/* Code */
+	p code,
+	td code {
+		@apply text-mauve bg-surface-0 rounded-sm p-1 font-mono text-sm font-semibold;
+	}
+	pre {
+		@apply my-4 rounded-md p-4;
+	}
+	.astro-code {
+		position: relative;
+	}
+
+	/* Sources */
+	#sources {
+		@apply text-subtext-0 mt-12 text-lg;
+		& + ul {
+			@apply mt-0 text-sm;
+			& > li {
+				@apply my-1;
+				& > a {
+					@apply text-subtext-0;
+				}
+			}
+		}
+	}
+}

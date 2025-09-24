@@ -1,0 +1,46 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<template id="copy-button">
+	<button
+		type="button"
+		class="grid-template-stack absolute top-3 right-3 grid cursor-pointer rounded-md p-1 group-hover:grid lg:hidden"
+	>
+		<Icon name="code-copy" size="24" class="grid-area-stack" />
+		<Icon
+			name="code-copied"
+			size="24"
+			class="grid-area-stack text-green hidden"
+		/>
+	</button>
+</template>
+<script>
+	const codeBlocks = document.querySelectorAll(".astro-code");
+	for (const codeBlock of codeBlocks) {
+		// const wrapper = document.createElement("div");
+		// wrapper.classList.add("relative", "group");
+		// codeBlock.replaceWith(wrapper);
+		// wrapper.appendChild(codeBlock);
+		const wrapper = codeBlock.parentElement;
+
+		const button = (
+			document.getElementById("copy-button") as HTMLTemplateElement
+		)?.content.cloneNode(true);
+		wrapper?.append(button);
+
+		wrapper?.lastElementChild?.addEventListener("click", async (e) => {
+			const pre = (e.target as HTMLElement).closest(".group");
+			const copyBtn = wrapper?.querySelector('[data-icon="code-copy"]');
+			const copiedBtn = wrapper?.querySelector('[data-icon="code-copied"]');
+			const code = pre?.querySelector("code")?.textContent?.replace(/\n$/, "");
+			await navigator.clipboard.writeText(code!);
+			copyBtn?.classList.add("hidden");
+			copiedBtn?.classList.remove("hidden");
+			setTimeout(() => {
+				copiedBtn?.classList.add("hidden");
+				copyBtn?.classList.remove("hidden");
+			}, 1500);
+		});
+	}
+</script>

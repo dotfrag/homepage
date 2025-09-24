@@ -1,0 +1,51 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+	data-modal-open
+	type="button"
+	class="bg-surface-0 text-subtext-0 ring-lavender/15 hover:bg-surface-1 hover:ring-lavender hidden w-48 cursor-pointer items-center rounded-md py-1.5 pr-3 pl-2 text-sm ring-1 transition sm:flex"
+>
+	<Icon name="search" width="20" height="20" />
+	<span class="ml-1">Search</span>
+	<span class="ml-auto flex-none pl-3 text-xs font-semibold">Ctrl K</span>
+</button>
+<dialog
+	id="searchModal"
+	class="border-lavender/50 bg-surface-0 text-text mx-auto mt-16 max-h-[calc(100%-8rem)] min-h-60 w-full max-w-[90%] rounded-md border p-4 shadow-lg backdrop:backdrop-blur-sm md:max-w-2xl"
+>
+	<div class="grid gap-4">
+		<div
+			id="searchBoxContainer"
+			class="before:bg-text relative flex items-center gap-2 before:absolute before:top-2.5 before:left-3 before:size-5 before:content-['']"
+		>
+			<input
+				id="searchBox"
+				type="search"
+				autocomplete="off"
+				placeholder="Search"
+				aria-label="Search"
+				class="border-rosewater/25 bg-mantle text-text h-10 w-full appearance-none rounded-md border pr-2 pl-10"
+			/>
+			<button
+				id="searchModalCloseBtn"
+				type="button"
+				class="border-rosewater/25 hover:bg-base focus:bg-base flex cursor-pointer items-center justify-center self-stretch rounded-md border px-2 transition"
+			>
+				<kbd class="font-mono text-sm">esc</kbd>
+			</button>
+		</div>
+		<div id="searchResults" class="grid gap-2"></div>
+	</div>
+</dialog>
+
+<style>
+	#searchBoxContainer::before {
+		mask: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCAyNCAyNCIgc3Ryb2tlLXdpZHRoPSIxLjUiCiAgICBzdHJva2U9ImN1cnJlbnRDb2xvciI+CiAgICA8cGF0aCBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiCiAgICAgICAgZD0ibTIxIDIxLTUuMTk3LTUuMTk3bTAgMEE3LjUgNy41IDAgMSAwIDUuMTk2IDUuMTk2YTcuNSA3LjUgMCAwIDAgMTAuNjA3IDEwLjYwN1oiIC8+Cjwvc3ZnPgo=")
+			center no-repeat;
+	}
+</style>
+
+<script src="../scripts/modal.ts"></script>
+<script src="../scripts/search.ts"></script>

@@ -1,0 +1,41 @@
+{
+	"name": "homepage",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"format": "prettier . --write",
+		"toolbar-enable": "astro preferences enable devToolbar",
+		"toolbar-disable": "astro preferences disable devToolbar"
+	},
+	"dependencies": {
+		"@astrojs/mdx": "^4.3.4",
+		"@astrojs/rss": "^4.0.12",
+		"@astrojs/sitemap": "^3.5.1",
+		"@fontsource-variable/ibm-plex-sans": "^5.2.8",
+		"@fontsource-variable/jetbrains-mono": "^5.2.8",
+		"@pagefind/modular-ui": "^1.3.0",
+		"@tailwindcss/vite": "^4.1.12",
+		"astro": "^5.13.5",
+		"astro-icon": "^1.1.5",
+		"pagefind": "^1.3.0",
+		"sirv": "^3.0.1",
+		"tailwindcss": "^4.1.12"
+	},
+	"devDependencies": {
+		"@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+		"prettier": "^3.6.2",
+		"prettier-plugin-astro": "^0.14.1",
+		"prettier-plugin-tailwindcss": "^0.6.14"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@tailwindcss/oxide",
+			"esbuild",
+			"sharp"
+		]
+	}
+}

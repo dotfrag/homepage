@@ -1,0 +1,91 @@
+@import "tailwindcss";
+@import "./typography";
+
+/* *,
+*::before,
+*::after {
+	outline: 2px solid lime;
+	background: hsl(0 100% 50% / 0.1);
+} */
+
+@layer base {
+	html {
+		color-scheme: dark;
+		scroll-behavior: smooth;
+		scrollbar-gutter: stable;
+	}
+}
+
+@theme {
+	/* prettier-ignore */
+	--font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	/* prettier-ignore */
+	--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+	/* prettier-ignore */
+	--font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Li1beration Mono", "Courier New", monospace;
+
+	/* https://github.com/catppuccin/catppuccin#-palette */
+	/* https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md */
+	--color-*: initial;
+	--color-rosewater: #f5e0dc;
+	--color-flamingo: #f2cdcd;
+	--color-pink: #f5c2e7;
+	--color-mauve: #cba6f7;
+	--color-red: #f38ba8;
+	--color-maroon: #eba0ac;
+	--color-peach: #fab387;
+	--color-yellow: #f9e2af;
+	--color-green: #a6e3a1;
+	--color-teal: #94e2d5;
+	--color-sky: #89dceb;
+	--color-sapphire: #74c7ec;
+	--color-blue: #89b4fa;
+	--color-lavender: #b4befe;
+	--color-text: #cdd6f4;
+	--color-subtext-1: #bac2de;
+	--color-subtext-0: #a6adc8;
+	--color-overlay-2: #9399b2;
+	--color-overlay-1: #7f849c;
+	--color-overlay-0: #6c7086;
+	--color-surface-2: #585b70;
+	--color-surface-1: #45475a;
+	--color-surface-0: #313244;
+	--color-base: #1e1e2e;
+	--color-mantle: #181825;
+	--color-crust: #11111b;
+}
+
+/*
+ no need to use @utility for these:
+  1. we know they are used, so tree-shaking is unnecessary
+  2. we don't need modifiers i.e. hover:
+*/
+
+.toc-is-active {
+	@apply md:bg-lavender md:text-crust;
+}
+
+.grid-template-stack {
+	grid-template-areas: "stack";
+}
+.grid-area-stack {
+	grid-area: stack;
+}
+
+#searchModal {
+	#searchBox {
+		@apply focus:ring-lavender focus:ring-1 focus:outline-none;
+	}
+	.pagefind-result {
+		@apply outline-lavender/25 bg-base hover:bg-mantle hover:outline-lavender grid rounded-sm outline transition;
+	}
+	.pagefind-title {
+		@apply border-surface-0 text-blue rounded-t-sm border-b p-3 text-lg font-semibold;
+	}
+	.pagefind-excerpt {
+		@apply rounded-b-sm p-3;
+	}
+	mark {
+		@apply bg-yellow text-mantle rounded-sm px-0.5 font-semibold;
+	}
+}

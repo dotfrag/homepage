@@ -1,0 +1,62 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PostCard from "@components/PostCard.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const posts = (await getCollection("blog")).sort(
+		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	);
+	return paginate(posts, { pageSize: 10 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<BaseLayout title="Blog">
+	<div class="grid gap-8">
+		<div class="grid gap-4 text-center text-balance">
+			<h1 class="text-3xl font-bold">knowledge base</h1>
+			<div>
+				<p>
+					The main focus of this blog is on short and concise technical
+					information.
+				</p>
+				<p>
+					While it does not contain any rocket-science information, basic
+					knowledge is assumed.
+				</p>
+			</div>
+		</div>
+		<div class="grid gap-4">
+			{
+				page.data.map((post) => (
+					<PostCard
+						id={post.id}
+						title={post.data.title}
+						description={post.data.description}
+						date={post.data.pubDate}
+					/>
+				))
+			}
+		</div>
+		<div class="mx-auto flex items-center gap-4 font-mono">
+			{
+				page.url.prev ? (
+					<a href={page.url.prev}>prev</a>
+				) : (
+					<span class="text-overlay-1 select-none">prev</span>
+				)
+			}
+			<span class="select-none">[{page.currentPage}]</span>
+			{
+				page.url.next ? (
+					<a href={page.url.next}>next</a>
+				) : (
+					<span class="text-overlay-1 select-none">next</span>
+				)
+			}
+		</div>
+	</div>
+</BaseLayout>

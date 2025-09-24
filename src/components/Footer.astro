@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<footer class="border-surface-1 flex justify-between border-t py-4">
+	<p class="hidden md:block">
+		Built with
+		<a href="https://astro.build/" target="_blank" rel="noreferrer noopener"
+			>Astro</a
+		>,
+		<a href="https://tailwindcss.com" target="_blank" rel="noreferrer noopener"
+			>TailwindCSS</a
+		>
+		and
+		<a href="https://pagefind.app" target="_blank" rel="noreferrer noopener"
+			>Pagefind</a
+		>.
+	</p>
+	<div
+		class="flex w-full items-center justify-between gap-2 md:w-fit md:justify-normal"
+	>
+		<span>dotfrag's homepage</span>
+		<a
+			href="https://github.com/dotfrag/homepage"
+			target="_blank"
+			rel="noreferrer noopener"
+			aria-label="GitHub repository"
+		>
+			<span class="sr-only">Go to dotfrag's homepage GitHub repo</span>
+			<Icon name="github" />
+		</a>
+	</div>
+</footer>

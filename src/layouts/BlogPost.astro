@@ -1,0 +1,62 @@
+---
+import type { MarkdownHeading } from "astro";
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import CodeCopyButton from "@components/CodeCopyButton.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import TableOfContents from "@components/TableOfContents.astro";
+
+type Props = CollectionEntry<"blog">["data"] & {
+	id: string;
+	headings: MarkdownHeading[];
+};
+
+const path = Astro.url.pathname.split("/");
+
+let category: string | null = null;
+let categoryTitle: string | null = null;
+if (path.length > 3) {
+	category = path[2];
+	categoryTitle = category[0].toUpperCase() + category.substring(1);
+}
+
+const { id, title, description, pubDate, updatedDate, toc, headings } =
+	Astro.props;
+---
+
+<BaseLayout {title} {description} pagefindBody={true}>
+	<!-- Breadcrumbs -->
+	<div
+		data-pagefind-ignore
+		class="text-overlay-1 mb-8 flex items-center gap-2 font-mono text-sm"
+	>
+		<a href="/" class="hover:text-text transition">Home</a>
+		<span class="text-xs select-none">&gt;</span>
+		<a href={`/blog`} class="hover:text-text transition">Blog</a>
+		<span class="text-xs select-none">&gt;</span>
+		{
+			category !== null && (
+				<>
+					<a href={`/blog/${category}`} class="hover:text-text transition">
+						{categoryTitle}
+					</a>
+					<span class="text-xs select-none">&gt;</span>
+				</>
+			)
+		}
+		<a href={`/blog/${id}`} class="hover:text-text transition">{title}</a>
+	</div>
+
+	<!-- Blog Post & Table of Contents -->
+	<div class:list={{ "gap-4 md:flex md:flex-row-reverse": toc }}>
+		{toc && <TableOfContents {headings} />}
+		<article class:list={["min-w-0", { grow: toc }]}>
+			<h1>{title}</h1>
+			<FormattedDate date={pubDate} } />
+			{updatedDate && <FormattedDate date={updatedDate} updated={true} />}
+			<slot />
+		</article>
+	</div>
+
+	<CodeCopyButton />
+</BaseLayout>

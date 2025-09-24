@@ -1,0 +1,16 @@
+#!/bin/bash
+
+staged_files=$(
+  git diff --name-only --staged \
+    | rg '\.(astro|css|js|json|md|mdx|mjs|ts)$' \
+    | paste -sd ' '
+)
+
+if [[ -z ${staged_files} ]]; then
+  exit 0
+fi
+
+# shellcheck disable=SC2086
+if pnpm prettier --write ${staged_files}; then
+  git add ${staged_files}
+fi

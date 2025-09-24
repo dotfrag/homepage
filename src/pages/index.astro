@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PostCard from "@components/PostCard.astro";
+import { Icon } from "astro-icon/components";
+
+const posts = (await getCollection("blog"))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 5);
+---
+
+<BaseLayout>
+	<div class="grid gap-8">
+		<div class="grid gap-4 text-center text-balance">
+			<h1 class="text-3xl font-bold">homepage</h1>
+			<div class="flex items-center justify-center gap-2">
+				<a href="https://dotfrag.com/" class="text-blue text-lg font-medium"
+					>entrypoint</a
+				>
+				<span class="text-4xl select-none">·</span>
+				<a
+					href="https://github.com/dotfrag/dotfiles"
+					class="text-blue text-lg font-medium">dotfiles</a
+				>
+				<span class="text-4xl select-none">·</span>
+				<a
+					href="https://github.com/dotfrag/dotvim"
+					class="text-blue text-lg font-medium">neovim config</a
+				>
+				<span class="text-4xl select-none">·</span>
+				<a
+					href="https://github.com/dotfrag"
+					class="text-blue text-lg font-medium">github</a
+				>
+			</div>
+		</div>
+		<div class="grid gap-4">
+			<h2 class="text-center text-2xl font-semibold">recent posts</h2>
+			{
+				posts.map((post) => (
+					<PostCard
+						id={post.id}
+						title={post.data.title}
+						description={post.data.description}
+						date={post.data.pubDate}
+					/>
+				))
+			}
+			<a
+				href="/blog"
+				class="flex items-center justify-center gap-1 text-lg font-medium"
+				>all posts <Icon name="arrow-right" class="mt-0.5" /></a
+			>
+		</div>
+	</div>
+</BaseLayout>

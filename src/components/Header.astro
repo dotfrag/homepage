@@ -1,0 +1,77 @@
+---
+import { Icon } from "astro-icon/components";
+
+import { SITE_TITLE } from "../consts";
+import HeaderLink from "./HeaderLink.astro";
+import Search from "./Search.astro";
+---
+
+<header class="border-surface-1 border-b py-2 sm:py-4">
+	<nav class="grid" aria-label="Main navigation">
+		<div class="flex items-center justify-between gap-2">
+			<div class="gap-5 sm:flex sm:items-center sm:justify-center">
+				<a class="relative text-2xl font-bold" href="/">{SITE_TITLE}</a>
+				<Search />
+			</div>
+			<div class="flex gap-1 sm:hidden">
+				<button data-modal-open type="button" class="rounded-md p-2">
+					<Icon name="search" class="size-6" />
+				</button>
+				<button
+					id="navBtn"
+					type="button"
+					class="grid-template-stack grid rounded-md p-2"
+					aria-expanded="false"
+				>
+					<Icon name="hamburger" class="grid-area-stack size-8 transition" />
+					<Icon
+						name="x-mark"
+						class="grid-area-stack size-8 scale-0 -rotate-90 opacity-0 transition"
+					/>
+				</button>
+			</div>
+			<div class="hidden sm:block">
+				<HeaderLink href="/">Home</HeaderLink>
+				<HeaderLink href="/blog">Blog</HeaderLink>
+				<HeaderLink href="/tools">Tools</HeaderLink>
+				<HeaderLink href="/about">About</HeaderLink>
+			</div>
+		</div>
+		<div
+			id="navMenu"
+			class="grid grid-rows-[0fr] transition-[grid-template-rows_0.4s_ease-out] sm:hidden"
+		>
+			<div class="bg-surface-0 grid gap-1 overflow-hidden rounded-md">
+				<div class="grid p-2">
+					<HeaderLink href="/">Home</HeaderLink>
+					<HeaderLink href="/blog">Blog</HeaderLink>
+					<HeaderLink href="/tools">Tools</HeaderLink>
+					<HeaderLink href="/about">About</HeaderLink>
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+
+<script>
+	const navBtn = document.getElementById("navBtn");
+	const navMenu = document.getElementById("navMenu");
+	const navIconOpen = document.querySelector<HTMLElement>(
+		'[data-icon="hamburger"',
+	);
+	const navIconClose = document.querySelector<HTMLElement>(
+		'[data-icon="x-mark"',
+	);
+
+	const toggleClasses = (el: HTMLElement, ...cls: string[]) =>
+		cls.forEach((cl) => el.classList.toggle(cl));
+
+	if (navBtn && navMenu && navIconOpen && navIconClose) {
+		navBtn.addEventListener("click", () => {
+			toggleClasses(navMenu, "grid-rows-[0fr]", "grid-rows-[1fr]");
+			toggleClasses(navIconOpen, "rotate-90", "scale-0", "opacity-0");
+			toggleClasses(navIconClose, "-rotate-90", "scale-0", "opacity-0");
+			navBtn.ariaExpanded = navBtn.ariaExpanded === "false" ? "true" : "false";
+		});
+	}
+</script>
