@@ -18,11 +18,11 @@
 
 @theme {
 	/* prettier-ignore */
-	--font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-sans: "IBM Plex Sans Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	/* prettier-ignore */
 	--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 	/* prettier-ignore */
-	--font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Li1beration Mono", "Courier New", monospace;
+	--font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Li1beration Mono", "Courier New", monospace;
 
 	/* https://github.com/catppuccin/catppuccin#-palette */
 	/* https://github.com/catppuccin/catppuccin/blob/main/docs/style-guide.md */
