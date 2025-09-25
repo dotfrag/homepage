@@ -1,0 +1,30 @@
+#!/bin/bash
+
+COMMIT_MSG_FILE=$1
+# COMMIT_SOURCE=$2
+# SHA1=$3
+
+STAGED_FILES=$(git diff --cached --name-status)
+
+if [[ $(wc -l <<< "${STAGED_FILES}") -gt 1 ]]; then
+  exit 0
+fi
+
+read -r status filepath <<< "${STAGED_FILES}"
+
+prefix=src/content/blog/
+if [[ ${filepath} != "${prefix}"* ]]; then
+  exit 0
+fi
+filepath="${filepath/${prefix}/}"
+filepath=${filepath%.*}
+
+case "${status}" in
+  A) what="add" ;;
+  M) what="update" ;;
+  *) exit 0 ;;
+esac
+
+echo "${what} '${filepath}'" > "${COMMIT_MSG_FILE}"
+
+exit 0 # or 1 to abort commit
