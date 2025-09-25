@@ -4,4 +4,4 @@
 export const SITE_TITLE = "dotfrag";
 export const SITE_DESCRIPTION = "dotfrag's homepage";
 
-export const categories = ["bash", "git", "linux"];
+export const CATEGORIES = ["bash", "git", "linux"];
