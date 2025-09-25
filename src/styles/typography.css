@@ -109,8 +109,12 @@ article {
 
 	/* Code */
 	p code,
-	td code {
+	td code,
+	li code {
 		@apply text-mauve bg-surface-0 rounded-sm p-1 font-mono text-sm font-semibold;
+	}
+	li code {
+		@apply p-0 px-1;
 	}
 	pre {
 		@apply my-4 rounded-md p-4;
