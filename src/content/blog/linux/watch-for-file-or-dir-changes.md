@@ -1,0 +1,70 @@
+---
+title: "Watch for file or directory changes and run command"
+pubDate: 2025-09-25
+---
+
+Using [entr](https://github.com/eradman/entr) and
+[fd](https://github.com/sharkdp/fd) (or find), the following script will watch
+for file or directory changes and run a command.
+
+Usage:
+
+- `fwatch file_name`: watches the file, if it's an executable, run it, otherwise
+  cat it
+- `fwatch file_name command`: watches the file and runs the command
+- `fwatch dir_name command`: watches the directory and runs the command (will
+  not work for files added after the script is started)
+- you can expand the "magic" section to add more file extension preset commands
+
+```bash
+#!/bin/bash
+#
+# watch for file or directory changes and run command
+
+if ! command -v entr > /dev/null; then
+  echo "entr command not found."
+  exit 1
+fi
+
+f=$1
+shift
+
+handle_file() {
+  # command is specified, use it
+  # NOTE: when running a script e.g `./script arg1`,
+  # you have to provide it twice: `fwatch script ./script arg1`
+  if (($# > 0)); then
+    command ls "${f}" | entr -c "$@"
+    return
+  fi
+
+  # no command has been specified, use magic
+  if [[ -x ${f} ]]; then # file is executable, run it
+    command ls "${f}" | entr -c ./"${f}"
+  else
+    case "${f}" in
+      *.hurl) cmd="hurl" ;;
+      *) cmd="bat -pp" ;; # unknown filetype, cat it
+    esac
+    # shellcheck disable=SC2086
+    command ls "${f}" | entr -c ${cmd} "${f}"
+  fi
+}
+
+handle_dir() {
+  if ! command -v fd > /dev/null; then
+    echo "fd command not found."
+    exit 1
+  fi
+  fd . "${f}" | entr -c "$@"
+}
+
+if [[ -f ${f} ]]; then
+  handle_file "$@"
+elif [[ -d ${f} ]]; then
+  handle_dir "$@"
+fi
+```
+
+You can find the most up to date version of this script
+[here](https://github.com/dotfrag/dotfiles/blob/main/bin/fwatch).
