@@ -37,13 +37,13 @@ article {
 		@apply my-5 leading-7;
 	}
 	ol {
-		@apply my-2 pl-5;
+		@apply my-2 space-y-1 pl-5;
 		li {
 			@apply list-decimal;
 		}
 	}
 	ul {
-		@apply my-2 pl-5;
+		@apply my-2 space-y-1 pl-5;
 		li {
 			@apply list-disc;
 		}
