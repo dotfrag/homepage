@@ -16,7 +16,7 @@ const { id, title, description, date } = Astro.props;
 	class="bg-surface-0 hover:bg-surface-1 rounded-md p-4 transition"
 >
 	<div class="grid justify-between sm:flex">
-		<h2 class="text-blue text-xl font-bold">{title}</h2>
+		<h2 class="text-blue text-xl font-semibold">{title}</h2>
 		<FormattedDate {date} />
 	</div>
 	{description && <div>{description}</div>}
