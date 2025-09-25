@@ -16,7 +16,7 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 3);
 	class="max-md:bg-surface-0 mb-6 shrink-0 max-md:rounded-sm max-md:p-2 md:mb-0 md:block md:w-50"
 >
 	<nav class="sticky top-8" aria-label="Table of Contents">
-		<h2 class="bg-base/80 rounded-sm px-2 text-xl font-semibold md:hidden">
+		<h2 class="bg-base/80 rounded-sm px-2 py-1 text-xl font-semibold md:hidden">
 			Table of Contents
 		</h2>
 		<ul
@@ -33,10 +33,10 @@ const filteredHeadings = headings.filter((heading) => heading.depth <= 3);
 					<li
 						class:list={[
 							{
-								"px-2 font-semibold": heading.depth === 2,
-								"pl-6 text-sm": heading.depth === 3,
+								"px-2 font-semibold has-[+li.px-2]:mb-1": heading.depth === 2,
+								"pr-2 pl-6 text-sm": heading.depth === 3,
 							},
-							"relative transition",
+							"relative py-0.5 transition",
 						]}
 					>
 						<a href={`#${heading.slug}`} class="block">

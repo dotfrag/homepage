@@ -28,19 +28,21 @@ const { id, title, description, pubDate, updatedDate, toc, headings } =
 	<!-- Breadcrumbs -->
 	<div
 		data-pagefind-ignore
-		class="text-overlay-1 mb-8 flex items-center gap-2 font-mono text-sm"
+		class="text-overlay-1 mb-8 flex flex-wrap items-center gap-2 font-mono text-sm"
 	>
 		<a href="/" class="hover:text-text transition">Home</a>
-		<span class="text-xs select-none">&gt;</span>
+		<span class="text-xs select-none" aria-hidden="true">&gt;</span>
 		<a href={`/blog`} class="hover:text-text transition">Blog</a>
-		<span class="text-xs select-none">&gt;</span>
+		<span class="text-xs select-none" aria-hidden="true">&gt;</span>
 		{
 			category !== null && (
 				<>
 					<a href={`/blog/${category}`} class="hover:text-text transition">
 						{categoryTitle}
 					</a>
-					<span class="text-xs select-none">&gt;</span>
+					<span class="text-xs select-none" aria-hidden="true">
+						&gt;
+					</span>
 				</>
 			)
 		}

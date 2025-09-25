@@ -5,7 +5,7 @@ import { Icon } from "astro-icon/components";
 <template id="copy-button">
 	<button
 		type="button"
-		class="grid-template-stack absolute top-3 right-3 grid cursor-pointer rounded-md p-1 group-hover:grid lg:hidden"
+		class="grid-template-stack bg-base/75 border-subtext-1/50 hover:bg-surface-1/75 absolute top-3 right-3 grid cursor-pointer rounded-md border p-1 group-hover:grid lg:hidden"
 	>
 		<Icon name="code-copy" size="24" class="grid-area-stack" />
 		<Icon
@@ -15,6 +15,7 @@ import { Icon } from "astro-icon/components";
 		/>
 	</button>
 </template>
+
 <script>
 	const codeBlocks = document.querySelectorAll(".astro-code");
 	for (const codeBlock of codeBlocks) {
