@@ -19,7 +19,7 @@
 		"@fontsource-variable/jetbrains-mono": "^5.2.8",
 		"@pagefind/modular-ui": "^1.4.0",
 		"@tailwindcss/vite": "^4.1.13",
-		"astro": "^5.13.11",
+		"astro": "^5.14.0",
 		"astro-icon": "^1.1.5",
 		"pagefind": "^1.4.0",
 		"sirv": "^3.0.2",
