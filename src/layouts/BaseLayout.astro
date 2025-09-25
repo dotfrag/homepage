@@ -37,3 +37,12 @@ const { title, description, pagefindBody = false } = Astro.props;
 		<Footer />
 	</body>
 </html>
+
+<script>
+	const sources = document.querySelectorAll<HTMLAnchorElement>(
+		"#sources + ul > li > a",
+	);
+	for (const source of sources) {
+		source.target = "_blank";
+	}
+</script>
