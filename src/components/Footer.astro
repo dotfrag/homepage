@@ -1,5 +1,11 @@
 ---
+import childProcess from "child_process";
 import { Icon } from "astro-icon/components";
+
+const hash = childProcess
+	.execSync("git rev-parse --short HEAD")
+	.toString()
+	.trim();
 ---
 
 <footer class="border-surface-1 flex justify-between border-t py-4">
@@ -29,5 +35,10 @@ import { Icon } from "astro-icon/components";
 			<span class="sr-only">Go to dotfrag's homepage GitHub repo</span>
 			<Icon name="github" />
 		</a>
+		<a
+			href=`https://github.com/dotfrag/homepage/commit/${hash}`
+			target="_blank"
+			aria-label="Open latest commit in GitHub">{hash}</a
+		>
 	</div>
 </footer>
