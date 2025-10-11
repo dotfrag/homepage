@@ -13,14 +13,14 @@
 		"toolbar-disable": "astro preferences disable devToolbar"
 	},
 	"dependencies": {
-		"@astrojs/mdx": "^4.3.6",
+		"@astrojs/mdx": "^4.3.7",
 		"@astrojs/rss": "^4.0.12",
 		"@astrojs/sitemap": "^3.6.0",
 		"@fontsource-variable/ibm-plex-sans": "^5.2.8",
 		"@fontsource-variable/jetbrains-mono": "^5.2.8",
 		"@pagefind/modular-ui": "^1.4.0",
 		"@tailwindcss/vite": "^4.1.14",
-		"astro": "^5.14.1",
+		"astro": "^5.14.4",
 		"astro-icon": "^1.1.5",
 		"pagefind": "^1.4.0",
 		"sirv": "^3.0.2",
