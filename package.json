@@ -19,12 +19,12 @@
 		"@fontsource-variable/ibm-plex-sans": "^5.2.8",
 		"@fontsource-variable/jetbrains-mono": "^5.2.8",
 		"@pagefind/modular-ui": "^1.4.0",
-		"@tailwindcss/vite": "^4.1.14",
-		"astro": "^5.14.5",
+		"@tailwindcss/vite": "^4.1.15",
+		"astro": "^5.14.8",
 		"astro-icon": "^1.1.5",
 		"pagefind": "^1.4.0",
 		"sirv": "^3.0.2",
-		"tailwindcss": "^4.1.14"
+		"tailwindcss": "^4.1.15"
 	},
 	"devDependencies": {
 		"@ianvs/prettier-plugin-sort-imports": "^4.7.0",
