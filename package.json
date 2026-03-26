@@ -14,8 +14,8 @@
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^4.3.14",
-		"@astrojs/rss": "^4.0.17",
-		"@astrojs/sitemap": "^3.7.1",
+		"@astrojs/rss": "^4.0.18",
+		"@astrojs/sitemap": "^3.7.2",
 		"@fontsource-variable/ibm-plex-sans": "^5.2.8",
 		"@fontsource-variable/jetbrains-mono": "^5.2.8",
 		"@pagefind/modular-ui": "^1.4.0",
